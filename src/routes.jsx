@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 // import ErrorPage from "./pages/ErrorPage";
-import Layout from "./pages/Layout";
 import TaskForm from "./tasks/TaskForm";
 import TaskDetails from "./tasks/TaskDetails";
 import TaskList from "./tasks/TaskList";
+import Layout from "./components/Layout";
 
 const router = createBrowserRouter([
   {

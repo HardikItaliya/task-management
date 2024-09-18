@@ -241,11 +241,19 @@ const TaskList = () => {
 
     if (filters.dueDate) {
       tasks = tasks.filter(
-        (task) => new Date(task.dueDate).toISOString().split("T")[0] === filters.dueDate
+        (task) =>
+          new Date(task.dueDate).toISOString().split("T")[0] === filters.dueDate
       );
     }
 
     setFilteredTasks(tasks);
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return `${String(date.getUTCDate()).padStart(2, "0")}-${String(
+      date.getUTCMonth() + 1
+    ).padStart(2, "0")}-${date.getUTCFullYear()}`;
   };
 
   const handleDelete = (id) => {
@@ -261,7 +269,7 @@ const TaskList = () => {
     return <div>Error fetching tasks: {tasksQuery.error.message}</div>;
 
   return (
-    <div className="container mt-4">
+    <div className="container-fluid px-3 px-md-5 mt-4">
       <div className="d-flex align-items-center justify-content-between mb-2">
         <h2>Task List</h2>
         <Link to="/tasks/add" className="btn btn-primary">
@@ -273,7 +281,7 @@ const TaskList = () => {
       <TaskFilter onFilter={handleFilterChange} />
 
       <table className="table table-hover table-bordered align-middle">
-        <thead className="table-dark">
+        <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Task Name</th>
@@ -288,7 +296,7 @@ const TaskList = () => {
               <tr key={task._id}>
                 <th scope="row">{index + 1}</th>
                 <td>{task.name}</td>
-                <td>{task.dueDate}</td>
+                <td>{formatDate(task.dueDate)}</td>
                 <td>
                   <span
                     className={`badge text-bg-${
@@ -303,24 +311,26 @@ const TaskList = () => {
                   </span>
                 </td>
                 <td>
-                  <Link
-                    to={`/tasks/${task._id}/edit`}
-                    className="btn btn-warning me-2"
-                  >
-                    <i className="bi bi-pencil"></i> Edit
-                  </Link>
-                  <button
-                    className="btn btn-sm btn-outline-danger me-2"
-                    onClick={() => handleDelete(task._id)}
-                  >
-                    <i className="bi bi-trash"></i> Delete
-                  </button>
-                  <Link
-                    to={`/tasks/${task._id}`}
-                    className="btn btn-sm btn-outline-secondary"
-                  >
-                    <i className="bi bi-box-arrow-in-right"></i> View
-                  </Link>
+                  <div className="d-grid d-sm-block d-md-inline-flex my-2">
+                    <Link
+                      to={`/tasks/${task._id}/edit`}
+                      className="btn btn-sm btn-warning me-2 my-1"
+                    >
+                      <i className="bi bi-pencil"></i> Edit
+                    </Link>
+                    <button
+                      className="btn btn-sm btn-outline-danger me-2 my-1"
+                      onClick={() => handleDelete(task._id)}
+                    >
+                      <i className="bi bi-trash"></i> Delete
+                    </button>
+                    <Link
+                      to={`/tasks/${task._id}`}
+                      className="btn btn-sm btn-outline-secondary me-2 my-1"
+                    >
+                      <i className="bi bi-box-arrow-in-right"></i> View
+                    </Link>
+                  </div>
                 </td>
               </tr>
             ))

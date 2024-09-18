@@ -125,15 +125,15 @@ const TaskForm = () => {
     dueDate: "",
     priority: "Low",
   });
+  const [errors, setErrors] = useState({});
 
   const isEditing = !!id;
 
-  // If editing, fetch the existing task details
   React.useEffect(() => {
     if (isEditing && tasksQuery.data) {
       const existingTask = tasksQuery.data.find((t) => t._id == id);
       if (existingTask) {
-        setTask({ 
+        setTask({
           name: existingTask.name,
           dueDate: existingTask.dueDate,
           priority: existingTask.priority,
@@ -146,8 +146,31 @@ const TaskForm = () => {
     setTask({ ...task, [e.target.name]: e.target.value });
   };
 
+  const validateTask = () => {
+    const newErrors = {};
+    const today = new Date().toISOString().split("T")[0];
+
+    if (task.name.length < 3) {
+      newErrors.name = "Task name must have minimum 3 characters.";
+    }
+    if (task.name.length > 20) {
+      newErrors.name = "Task name should not have more than 20 characters.";
+    }
+
+    if (task.dueDate < today) {
+      newErrors.dueDate = "Due date cannot be in the past.";
+    }
+
+    return newErrors;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const validationErrors = validateTask();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
 
     if (isEditing) {
       updateTaskMutation.mutate(
@@ -181,10 +204,11 @@ const TaskForm = () => {
             name="name"
             value={task.name}
             onChange={handleChange}
-            className="form-control"
+            className={`form-control ${errors.name ? "is-invalid" : ""}`}
             placeholder="Task name here"
             required
           />
+          {errors.name && <div className="invalid-feedback">{errors.name}</div>}
         </div>
         <div className="mb-3">
           <label htmlFor="dueDate" className="form-label">
@@ -194,11 +218,18 @@ const TaskForm = () => {
             type="date"
             id="dueDate"
             name="dueDate"
-            value={task.dueDate ? new Date(task.dueDate).toISOString().split('T')[0] : ''}
+            value={
+              task.dueDate
+                ? new Date(task.dueDate).toISOString().split("T")[0]
+                : ""
+            }
             onChange={handleChange}
-            className="form-control"
+            className={`form-control ${errors.dueDate ? "is-invalid" : ""}`}
             required
           />
+          {errors.dueDate && (
+            <div className="invalid-feedback">{errors.dueDate}</div>
+          )}
         </div>
         <div className="mb-3">
           <label htmlFor="priority" className="form-label">

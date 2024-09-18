@@ -107,9 +107,9 @@ const TaskDetails = () => {
     <div className="container mt-4">
       <div className="d-flex align-items-center justify-content-between mb-2">
         <h2>Task Details</h2>
-        <Link to="/" className="btn btn-secondary">
+        {/* <Link to="/" className="btn btn-secondary">
           Back to Task List
-        </Link>
+        </Link> */}
       </div>
       <div className="card">
         <div className="card-body">
