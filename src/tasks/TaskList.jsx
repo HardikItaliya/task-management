@@ -279,7 +279,7 @@ const TaskList = () => {
 
       {/* Task Filter Component */}
       <TaskFilter onFilter={handleFilterChange} />
-      <div className="overflow-scroll">
+      <div className="overflow-auto">
         <table className="table table-hover table-bordered align-middle">
           <thead>
             <tr>

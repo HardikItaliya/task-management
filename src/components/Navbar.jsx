@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import useTasks from "../hooks/useTasks";
-// import logo from '../assets/logo.webp';
 
 const Navbar = () => {
-  const { tasksQuery } = useTasks(); // Get the tasks from Zustand or API
+  const { tasksQuery } = useTasks();
 
   const taskCount = tasksQuery?.data?.length || 0;
 
