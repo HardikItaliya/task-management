@@ -192,8 +192,11 @@ const TaskForm = () => {
 
   return (
     <div className="container mt-4">
+      <div className="d-flex align-items-center justify-content-between mb-2">
+        <h3>{isEditing ? "Update Task" : "Add New Task"}</h3>
+      </div>
+
       <form onSubmit={handleSubmit} className="p-4 bg-light rounded border">
-        <h4>{isEditing ? "Update Task" : "Add New Task"}</h4>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
             Task Name
@@ -204,11 +207,10 @@ const TaskForm = () => {
             name="name"
             value={task.name}
             onChange={handleChange}
-            className={`form-control ${errors.name ? "is-invalid" : ""}`}
+            className="form-control"
             placeholder="Task name here"
             required
           />
-          {errors.name && <div className="invalid-feedback">{errors.name}</div>}
         </div>
         <div className="mb-3">
           <label htmlFor="dueDate" className="form-label">
@@ -224,12 +226,9 @@ const TaskForm = () => {
                 : ""
             }
             onChange={handleChange}
-            className={`form-control ${errors.dueDate ? "is-invalid" : ""}`}
+            className="form-control"
             required
           />
-          {errors.dueDate && (
-            <div className="invalid-feedback">{errors.dueDate}</div>
-          )}
         </div>
         <div className="mb-3">
           <label htmlFor="priority" className="form-label">

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css"; // Ensure Bootstrap CSS is imported
 
 const TaskFilter = ({ onFilter }) => {
   const [priority, setPriority] = useState("");
@@ -14,8 +13,8 @@ const TaskFilter = ({ onFilter }) => {
   }, [priority, dueDate]);
 
   return (
-    <div className="mb-3 p-3 bg-light rounded shadow-sm d-flex align-items-center">
-      <div className="me-3">
+    <div className="mb-3 p-sm-3 p-2 bg-light rounded shadow-sm d-flex align-items-center">
+      <div className="me-3 me-sm-2">
         <label htmlFor="priorityFilter" className="form-label fw-bold">
           Filter by Priority
         </label>

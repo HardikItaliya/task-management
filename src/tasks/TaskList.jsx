@@ -271,7 +271,7 @@ const TaskList = () => {
   return (
     <div className="container-fluid px-3 px-md-5 mt-4">
       <div className="d-flex align-items-center justify-content-between mb-2">
-        <h2>Task List</h2>
+        <h3 className="mb-0">Task List</h3>
         <Link to="/tasks/add" className="btn btn-primary">
           Add New Task
         </Link>

@@ -8,9 +8,9 @@ const Navbar = () => {
   const taskCount = tasksQuery?.data?.length || 0;
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light px-3">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light  px-2 px-sm-3">
       <Link to="/" className="navbar-brand">
-        <i className="bi bi-kanban-fill"></i>
+        <i className="bi bi-kanban-fill fs-1 fs-sm-2"></i>
       </Link>
       <div className="d-flex ms-auto align-items-center">
         <h2 className="me-2 mb-0">Task Management</h2>

@@ -106,7 +106,7 @@ const TaskDetails = () => {
   return (
     <div className="container mt-4">
       <div className="d-flex align-items-center justify-content-between mb-2">
-        <h2>Task Details</h2>
+        <h3>Task Details</h3>
         {/* <Link to="/" className="btn btn-secondary">
           Back to Task List
         </Link> */}
