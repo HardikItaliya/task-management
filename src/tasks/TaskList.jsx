@@ -82,7 +82,7 @@ const TaskList = () => {
                 </td>
               </tr>
             ) : filteredTasks.length > 0 ? (
-              filteredTasks.map((task, index) => (
+              filteredTasks?.map((task, index) => (
                 <tr key={task._id}>
                   <th scope="row">{index + 1}</th>
                   <td>{task.name}</td>

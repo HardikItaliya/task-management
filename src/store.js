@@ -37,7 +37,7 @@ const useTaskStore = create((set) => ({
         priority: newPriority,
       }); // Assuming update method
       set((state) => ({
-        tasks: state.tasks.map((task) => (task.id === id ? updatedTask : task)),
+        tasks: state.tasks?.map((task) => (task.id === id ? updatedTask : task)),
       }));
     } catch (error) {
       console.error("Error updating task:", error);
