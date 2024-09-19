@@ -7,7 +7,7 @@ const apiClient = new APIClient("/api");
 const useTasks = () => {
   const queryClient = useQueryClient();
 
-  // Fetch tasks without pagination
+  // Fetch tasks
   const fetchTasks = () => {
     return apiClient.getAll().then((res) => res.data);
   };

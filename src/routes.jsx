@@ -27,10 +27,6 @@ const router = createBrowserRouter([
         path: "tasks/:taskId",
         element: <TaskDetails />,
       },
-      //   {
-      //     path: "games/:slug",
-      //     element: <GameDetailPage />,
-      //   },
     ],
   },
 ]);

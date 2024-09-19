@@ -1,55 +1,7 @@
-// import { create } from "zustand";
-// import { tasks } from "./utiles/task";
-
-// const useTaskStore = create((set) => ({
-//   tasks: tasks,
-
-//   // Add Task
-//   addTask: (name, dueDate, priority) =>
-//     set((state) => ({
-//       tasks: [
-//         ...state.tasks,
-//         { id: tasks.length + 1, name, dueDate, priority },
-//       ],
-//     })),
-
-//   // Toggle Priority (for example, if you want to handle changing the priority)
-//   togglePriority: (id, newPriority) =>
-//     set((state) => ({
-//       tasks: state.tasks.map((task) =>
-//         task.id === id ? { ...task, priority: newPriority } : task
-//       ),
-//     })),
-
-//   // Delete Task
-//   deleteTask: (id) =>
-//     set((state) => ({
-//       tasks: state.tasks.filter((task) => task.id !== id),
-//     })),
-
-//   // Update Task (name, dueDate, priority)
-//   updateTask: (id, newName, newDueDate, newPriority) =>
-//     set((state) => ({
-//       tasks: state.tasks.map((task) =>
-//         task.id == id
-//           ? {
-//               ...task,
-//               name: newName,
-//               dueDate: newDueDate,
-//               priority: newPriority,
-//             }
-//           : task
-//       ),
-//     })),
-// }));
-
-// export default useTaskStore;
-
 import { create } from "zustand";
-import APIClient from "./services/api-client"; // Adjust the import path
-// import { tasks as initialTasks } from "./utiles/task"; // Adjust the import path
+import APIClient from "./services/api-client";
 
-const apiClient = new APIClient("/tasks"); // Adjust the endpoint if needed
+const apiClient = new APIClient("/tasks");
 
 const useTaskStore = create((set) => ({
   tasks: [],
@@ -57,7 +9,7 @@ const useTaskStore = create((set) => ({
   // Fetch tasks from API
   fetchTasks: async () => {
     try {
-      const tasks = await apiClient.getAll(); // Assuming getAll fetches tasks
+      const tasks = await apiClient.getAll();
       set({ tasks });
     } catch (error) {
       console.error("Error fetching tasks:", error);
