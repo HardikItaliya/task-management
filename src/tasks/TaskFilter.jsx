@@ -13,9 +13,9 @@ const TaskFilter = ({ onFilter }) => {
   }, [priority, dueDate]);
 
   return (
-    <div className="mb-3 p-sm-3 p-2 bg-light rounded shadow-sm d-flex align-items-center">
-      <div className="me-3 me-sm-2">
-        <label htmlFor="priorityFilter" className="form-label fw-bold">
+    <div className="mb-3 p-3 bg-light rounded shadow-sm d-flex flex-column flex-sm-row align-items-sm-center">
+      <div className="me-3 me-sm-2 mb-2 mb-sm-0">
+        <label htmlFor="priorityFilter" className="form-label">
           Filter by Priority
         </label>
         <select
@@ -36,7 +36,7 @@ const TaskFilter = ({ onFilter }) => {
       </div>
 
       <div>
-        <label htmlFor="dueDateFilter" className="form-label fw-bold">
+        <label htmlFor="dueDateFilter" className="form-label">
           Filter by Due Date
         </label>
         <input
